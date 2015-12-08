@@ -31,7 +31,6 @@ sub import {
 sub clean_shadows {
   my ($lib, $arch, $destarch) = @_;
   require File::Find;
-  warn "checking $lib and $arch";
 
   my $arch_files = 0;
   File::Find::find(sub {
@@ -50,7 +49,7 @@ sub clean_shadows {
     my $rel_path = File::Spec->abs2rel($File::Find::name, $lib);
     my $arch_file = File::Spec->catdir($destarch, $rel_path);
     if (-f $arch_file) {
-      warn "needs removal: $arch_file";
+      unlink $arch_file;
     }
   }, $lib);
 }
