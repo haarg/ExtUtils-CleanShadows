@@ -3,10 +3,7 @@ use strict;
 use warnings;
 
 our $VERSION = '0.001000';
-$VERSION = eval $VERSION;
-
-use ExtUtils::MakeMaker ();
-use File::Find ();
+$VERSION =~ tr/_//d;
 
 sub import {
   my $class = shift;
